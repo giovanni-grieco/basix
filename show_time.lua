@@ -11,27 +11,8 @@ while true do
     else
         monitor.clearLine(1)
     end
-    -- Set the text color to white
-    monitor.setTextColor(colors.white)
-    -- Set the background color to black
-    monitor.setBackgroundColor(colors.black)
-    -- Set the text scale to 2
-    monitor.setTextScale(2)
-    -- Set the cursor position to the center of the screen
-    local width, height = monitor.getSize()
-    local x = math.floor((width - #current_time) / 2)
-    local y = math.floor(height / 2)
-    monitor.setCursorPos(x, y)
     -- Write the current time to the monitor
     monitor.write(current_time)
-    -- Set the text color to green
-    monitor.setTextColor(colors.green)
-    -- Set the background color to black
-    monitor.setBackgroundColor(colors.black)
-    -- Set the text scale to 1
-    monitor.setTextScale(1)
-    -- Set the cursor position to the bottom of the screen
-    monitor.setCursorPos(1, height)
     -- Write the message to the monitor
     print("Press any key to exit...")
     -- Check for key presses
