@@ -13,15 +13,6 @@ while true do
     end
     -- Write the current time to the monitor
     monitor.write(current_time)
-    -- Write the message to the monitor
-    print("Press any key to exit...")
-    -- Check for key presses
-    local event, key = os.pullEvent("key")
-    if key then
-        -- Clear the screen and exit the loop
-        monitor.clear()
-        break
-    end
     -- Wait for 1 second before updating the time
     os.sleep(1)
 end
