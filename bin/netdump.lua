@@ -25,6 +25,9 @@ end
 
 modem.open(listen_on)
 
+print("Press CTRL+T to terminate.")
+print("Listening on port " .. listen_on .. "...")
+
 while true do
     local event, side, channel, reply_channel, message = os.pullEvent("modem_message")
     dump_data(event, side, channel, reply_channel, message)

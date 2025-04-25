@@ -72,7 +72,7 @@ local function main()
         end
     end
     print("Basix installation complete.")
-    print("Please restart your computer to apply changes.")
+    print("Please restart your computer to apply changes. (Hold CTRL+R)")
 end
 
 main()

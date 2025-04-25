@@ -7,7 +7,7 @@ end
 
 local modem = peripheral.find("modem") or error("No modem found", 1)
 
-
+print("Press CTRL+T to terminate.")
 while true do
     modem.transmit(destination, destination, "Echo Request")
     print("Pinged " .. destination)
