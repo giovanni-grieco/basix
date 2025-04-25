@@ -31,5 +31,15 @@ print("Listening on port " .. listen_on .. "...")
 while true do
     local event, side, channel, reply_channel, message = os.pullEvent("modem_message")
     dump_data(event, side, channel, reply_channel, message)
+    local raw_event = os.pullEventRaw()
+    if raw_event == "terminate" then
+        print("Terminating...")
+        break
+    end
     os.sleep(0.1)
 end
+
+modem.close(listen_on)
+print("Closed port " .. listen_on)
+print("Exiting netdump.")
+-- End of script
