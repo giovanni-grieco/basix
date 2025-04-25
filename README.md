@@ -1,5 +1,5 @@
 # basix
-a basic unix implementation for [ComputerCraft](https://tweaked.cc/)
+a basic unix-like OS for [ComputerCraft](https://tweaked.cc/)
 
 ## how to install
 ```
