@@ -1,3 +1,5 @@
 /bin/cat.lua
 /bin/show_time.lua
+/bin/ping.lua
+/bin/netdump.lua
 startup.lua
