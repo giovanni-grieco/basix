@@ -1,2 +1,3 @@
-cat.lua
-show_time.lua
+/bin/cat.lua
+/bin/show_time.lua
+startup.lua
