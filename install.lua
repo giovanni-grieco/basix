@@ -1,6 +1,3 @@
-local http = require("http")
-local textutils = require("textutils")
-
 local url_prefix = "https://raw.githubusercontent.com/giovanni-grieco/basix/refs/heads/main/"
 
 local file_list_url = url_prefix .. "filelist"
