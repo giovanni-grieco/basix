@@ -4,11 +4,9 @@
 -- Constants
 local url_prefix = "https://game-hub.it/basix/"
 
-local binary_path = "/bin/"
-
 local file_list_url = url_prefix .. "filelist"
 
-print("Downloading file list from"  .. file_list_url)
+print("Downloading file list from "  .. file_list_url)
 
 local file_list = http.get(file_list_url).readAll()
 
@@ -39,11 +37,31 @@ local function download_file(url)
     end
 end
 
+local function get_folders_to_create()
+    local folders = {}
+    for line in file_list:gmatch("[^\r\n]+") do
+        -- check if the folder exists in the folders collection
+        local folder_path = line:match("(.*/)")
+        for _, folder in ipairs(folders) do
+            if folder ~= folder_path then
+                table.insert(folders, folder_path)
+            end
+        end
+    end
+    return folders
+end
+
 -- Main Script
 
 local function main()
-    if not fs.exists(binary_path) then
-        fs.makeDir(binary_path)
+    local folders_to_create = get_folders_to_create()
+    for _, folder in ipairs(folders_to_create) do
+        if not fs.exists(folder) then
+            fs.makeDir(folder)
+            print("Created folder: " .. folder)
+        else
+            print("Folder already exists: " .. folder)
+        end
     end
     
     for line in file_list:gmatch("[^\r\n]+") do
@@ -53,22 +71,18 @@ local function main()
     for i, line in ipairs(file_list_lines) do
         local file_url = url_prefix .. line
         local file_name = line:match("([^/]+)$")
-        local file_path = binary_path .. file_name
-        if not fs.exists(file_path) then
-            print("Downloading " .. file_name .. " from " .. file_url)
-            local file_name, file_data = download_file(file_url)
-            if file_name and file_data then
-                if file_name:match("startup.lua") then
-                    save_file("/", file_name, file_data)
-                else
-                    save_file(binary_path, file_name, file_data)
-                end
-                print("Downloaded " .. file_name .. " successfully.")
+        local file_path = line:match("(.*/)")
+        print("Downloading " .. file_name .. " from " .. file_url)
+        local file_name, file_data = download_file(file_url)
+        if file_name and file_data then
+            if file_name:match("startup.lua") then
+                save_file("/", file_name, file_data)
             else
-                print("Failed to download " .. file_name)
+                save_file(file_path, file_name, file_data)
             end
+            print("Downloaded " .. file_name .. " successfully.")
         else
-            print(file_name .. " already exists, skipping download.")
+            print("Failed to download " .. file_name)
         end
     end
     print("Basix installation complete.")

@@ -1,5 +1,7 @@
-/bin/cat.lua
-/bin/show_time.lua
-/bin/ping.lua
-/bin/netdump.lua
+bin/cat.lua
+bin/show_time.lua
+bin/ping.lua
+bin/netdump.lua
+lib/glib.lua
+lib/glib_test.lua
 startup.lua
