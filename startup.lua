@@ -4,7 +4,6 @@
 
 -- load libraries
 
-_G.glib= require "/lib/glib"
 
 -- Constants
 local completion = require "cc.shell.completion"
