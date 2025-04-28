@@ -4,4 +4,6 @@ bin/ping.lua
 bin/netdump.lua
 bin/shell.lua
 kernel/kernel.lua
+kernel/test1.lua
+kernel/test2.lua
 startup.lua
